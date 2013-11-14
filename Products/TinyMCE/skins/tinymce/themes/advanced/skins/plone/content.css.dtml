@@ -1,3 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 body.mceForceColors {background:#FFF; color:#000;}
 
 .mceContentBody {
