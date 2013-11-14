@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.813em;
+  font-size: 12px;
 }
 
 body.mceForceColors {background:#FFF; color:#000;}
