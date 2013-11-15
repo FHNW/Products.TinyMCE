@@ -2,7 +2,7 @@
 
 body.mceContentBody {
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 body.mceForceColors {background:#FFF; color:#000;}
