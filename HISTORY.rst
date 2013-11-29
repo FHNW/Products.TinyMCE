@@ -2,8 +2,8 @@
 HISTORY
 =======
 
-1.4.0 (unreleased)
-------------------
+1.3.6-FHNW1 (2013-11-29)
+------------------------
 
 - Use the PLONE_APP_CONTENTTYPES_FIXTURE test layer for Plone 5 compatibility.
   [timo]
