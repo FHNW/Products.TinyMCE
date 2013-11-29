@@ -8,6 +8,8 @@ HISTORY
 - Use the PLONE_APP_CONTENTTYPES_FIXTURE test layer for Plone 5 compatibility.
   [timo]
 
+- Added replacefile feature
+  [tomgross]
 
 
 1.3.6 (unreleased)
