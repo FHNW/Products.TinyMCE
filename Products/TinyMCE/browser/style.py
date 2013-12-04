@@ -33,7 +33,7 @@ class TinyMCEStyle(BrowserView):
                         style.getConditionalcomment():
                     continue
                 if style.isExternalResource():
-                    src = style.getId()
+                    src = "<!-- @import url(%s); -->" % (style.getId())
                 else:
                     src = "<!-- @import url(%s/%s/%s); -->" % (
                         registry_url, skinname, style.getId())
