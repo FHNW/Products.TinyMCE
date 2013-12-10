@@ -95,7 +95,9 @@ line-height: 2em;
 overflow-y: auto;
 overflow-x: hidden;
 }
-
+.radioscrolllist .list img {
+    display: none;
+}
 .radioscrolllist .list {
 padding-left: 0.5em;
 }
@@ -105,7 +107,11 @@ margin-left: 0.5em;
 
 #internallinkcontainer .list.item span,
 #internallinkcontainer .list.item a {
+margin-left: 1em;
+padding-left: 1.5em;
+padding-top: 0.3em;
 position: absolute;
+border-bottom: none;
 }
 
 /* InputPanel */
