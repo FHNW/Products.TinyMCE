@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
 body.mceContentBody {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
