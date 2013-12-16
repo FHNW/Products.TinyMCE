@@ -2,8 +2,8 @@
 HISTORY
 =======
 
-1.4.0 (unreleased)
-------------------
+1.3.6-FHNW2 (2013-12-16)
+------------------------
 
 - Fixed inclusion of external CSS resources
   [rristow]
