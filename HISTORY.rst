@@ -5,7 +5,8 @@ HISTORY
 1.4.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed inclusion of external CSS resources
+  [rristow]
 
 
 1.3.6-FHNW1 (2013-11-29)
