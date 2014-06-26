@@ -17,7 +17,7 @@ from Products.TinyMCE.vocabularies import (
 _ = MessageFactory('plone.tinymce')
 
 DEFAULT_PLUGINS = ['advhr', 'definitionlist', 'directionality', 'emotions',
- 'fullscreen', 'inlinepopups', 'insertdatetime', 'media', 'nonbreaking',
+ 'fullscreen', 'inlinepopups', 'insertdatetime', 'lists', 'media', 'nonbreaking',
  'noneditable', 'pagebreak', 'paste', 'plonebrowser',
  'ploneinlinestyles', 'plonestyle', 'preview', 'print', 'save',
  'searchreplace', 'tabfocus', 'table', 'visualchars', 'xhtmlxtras']
