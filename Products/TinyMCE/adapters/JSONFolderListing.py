@@ -132,7 +132,7 @@ class JSONFolderListing(object):
                 'is_folderish': brain.is_folderish,
                 })
 
-        # add catalog_ressults
+        # add catalog_results
         results['items'] = catalog_results
 
         # decide whether to show the upload new button
