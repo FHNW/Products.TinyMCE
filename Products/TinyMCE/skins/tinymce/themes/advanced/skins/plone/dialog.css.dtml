@@ -107,11 +107,8 @@ margin-left: 0.5em;
 
 #internallinkcontainer .list.item span,
 #internallinkcontainer .list.item a {
-margin-left: 1em;
-padding-left: 1.5em;
-padding-top: 0.3em;
-position: absolute;
-border-bottom: none;
+  text-decoration: none;
+  white-space: nowrwap;
 }
 
 /* InputPanel */
