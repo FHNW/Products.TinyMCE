@@ -5,7 +5,8 @@ HISTORY
 1.4.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Send ObjectInitialized event on image upload
+  [tomgross]
 
 
 1.3.6-FHNW2 (2013-12-16)

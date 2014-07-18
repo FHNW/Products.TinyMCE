@@ -2,6 +2,7 @@ from Acquisition import aq_inner
 from Acquisition import aq_parent
 from zExceptions import BadRequest
 from zope.app.content import queryContentType
+from zope.event import notify
 from zope.schema import getFieldsInOrder
 from Products.CMFCore.interfaces._content import IFolderish
 from Products.CMFCore.utils import getToolByName
@@ -100,6 +101,8 @@ class Upload(object):
             # set primary field
             pf = obj.getPrimaryField()
             pf.set(obj, form['uploadfile'])
+            from Products.Archetypes.event import ObjectInitializedEvent
+            notify(ObjectInitializedEvent(obj))
 
         if not obj:
             return self.errorMessage("Could not upload the file")
@@ -193,6 +196,14 @@ class Upload(object):
                 obj.description = description
 
         path = self._setfile(obj)
+        catalog = getToolByName(context, 'portal_catalog')
+        try:
+            # we need to get the object again because it could be
+            # manipulated by an event
+            # XXX use IUUID adapter here
+            obj = catalog(UID=obj.UID())[0].getObject()
+        except TypeError:
+            pass   # obj is defined already
         folder = obj.aq_parent.absolute_url()
         return self.okMessage(path, folder)
 
