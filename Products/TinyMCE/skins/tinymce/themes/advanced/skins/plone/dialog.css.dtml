@@ -109,6 +109,7 @@ margin-left: 0.5em;
 #internallinkcontainer .list.item a {
   text-decoration: none;
   white-space: nowrwap;
+  border-bottom: none;
 }
 
 /* InputPanel */
