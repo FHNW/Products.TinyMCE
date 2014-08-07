@@ -36,16 +36,22 @@
         <div id="browseimage_panel" class="row">
             <div id="general_panel" class="cell width-full position-0">
                 <div class="field">
-
                     <div class="widget">
                         <input type="text" name="searchtext" id="searchtext" title="Search site" placeholder="Search site" value="" i18n:attributes="placeholder; title" i18n:domain="plone.tinymce"/>
                         <a href="" id="clear-btn" title="Clear" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/cancel.png" /></a>
                         <a href="" id="search-btn" title="Search" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/magnifier.png" /></a>
                     </div>
                 </div>
-                <div class="legend">
-                    <a id="listview" href="" title="List view" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/display_list.png" /></a>
-                    <a id="thumbview" href="" title="Thumbnail view" class="current" i18n:attributes="title" i18n:domain="plone"><img src="img/display_thumbs.png" /></a>
+
+                <div style="display: inline" >
+                    <div id="upload-button" class="cell width-3:4 position-0 hide">
+                        <img style="margin-left: 5px" src="img/application_get.png" /> <a id="upload" href="" i18n:translate="" i18n:domain="plone.tinymce">Upload</a>
+                    </div>
+
+                    <div class="legend">
+                        <a id="listview" href="" title="List view" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/display_list.png" /></a>
+                        <a id="thumbview" href="" title="Thumbnail view" class="current" i18n:attributes="title" i18n:domain="plone"><img src="img/display_thumbs.png" /></a>
+                    </div>
                 </div>
                 <div id="shortcutsview">
                     <div id="item-template" class="shortcut"></div>
@@ -130,7 +136,6 @@
 
                 </div>
             </div>
-
             <div id="addimage_panel" class="cell width-1:4 position-3:4 hide">
                  <h2></h2>
                  <form name="upload_form" id="upload_form" method="post" target="upload_iframe" enctype="multipart/form-data">
@@ -147,7 +152,6 @@
                                 <input type="text" name="uploadtitle" id="uploadtitle" value="" />
                              </div>
                      </div>
-
                      <div class="field">
                              <label for="uploaddescription" i18n:domain="plone.tinymce" i18n:translate="">Description</label>
                              <div class="widget">
@@ -286,12 +290,10 @@
             <a href="#" class="hide" id="camefrom"></a>
         </div>
 
-        <div class="visualClear"><!-- --></div>
 
+        <div class="visualClear"><!-- --></div>
         <div id="footer" class="row">
-            <div id="upload-button" class="cell width-3:4 position-0 hide">
-                <img src="img/application_get.png" /> <a id="upload" href="" i18n:translate="" i18n:domain="plone.tinymce">Upload</a>
-            </div>
+
             <div id="action-button" class="cell width-1:4 position-3:4">
                 <input type="submit" id="insert-selection" class="context plonebutton" name="insert-image"
                        i18n:attributes="value" i18n:domain="plone.tinymce" value="OK" disabled="disabled" />
