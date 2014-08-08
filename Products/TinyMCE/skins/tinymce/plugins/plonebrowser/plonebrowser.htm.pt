@@ -44,7 +44,7 @@
                 </div>
 
                 <div style="display: inline" >
-                    <div id="upload-button" class="cell position-0 hide">
+                    <div id="upload-button" class="cell position-0 hide" style="width: auto">
                         <img style="margin-left: 5px" src="img/application_get.png" /> <a id="upload" href="" i18n:translate="" i18n:domain="plone.tinymce">Upload</a>
                     </div>
 
