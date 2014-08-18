@@ -2,7 +2,7 @@
 HISTORY
 =======
 
-1.4.0 (unreleased)
+1.4.0 (2014-08-18)
 ------------------
 
 - Send ObjectInitialized event on image upload
