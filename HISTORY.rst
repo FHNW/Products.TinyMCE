@@ -5,7 +5,7 @@ HISTORY
 1.4.0-FHNW2 (unreleased)
 ------------------------
 
-- Nothing changed yet.
+- Compatible with universal analytics (plugin).
 
 
 1.4.0-FHNW1 (2014-08-18)
