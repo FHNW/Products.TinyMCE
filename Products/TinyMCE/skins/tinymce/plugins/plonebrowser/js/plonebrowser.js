@@ -732,9 +732,9 @@ BrowserDialog.prototype.checkSearch = function (e) {
     }
 
     // Activate search when we have enough input and either livesearch is
-    // enabled or the user explicitly pressed Enter (which === 13), or the user 
-    // clicks (which === 1) on the search icon 
-    if (len >= 3 && (this.tinyMCEPopup.editor.settings.livesearch === true 
+    // enabled or the user explicitly pressed Enter (which === 13), or the user
+    // clicks (which === 1) on the search icon
+    if (len >= 3 && (this.tinyMCEPopup.editor.settings.livesearch === true
                     || e.which === 13 || e.which === 1)) {
         this.is_search_activated = true;
         this.getFolderListing(this.tinyMCEPopup.editor.settings.navigation_root_url, this.method_search);
@@ -915,7 +915,7 @@ BrowserDialog.prototype.getFolderListing = function (context_url, method) {
                         case 'listview':
                             if (item.is_folderish) {
                                 folder_html.push('<div class="list item folderish ' + (i % 2 === 0 ? 'even' : 'odd') + '">');
-                                if (self.is_link_plugin === true) {
+                                if (self.is_link_plugin === true || item.is_image) {
                                     jq.merge(folder_html, [
                                         '<input href="' + item.url + '" ',
                                             'type="radio" class="noborder" style="margin: 0; width: 16px" name="internallink" value="',
@@ -1194,10 +1194,10 @@ BrowserDialog.prototype.displayPanel = function(panel, upload_allowed) {
         }
         jq('#browseimage_panel', document).removeClass('hide').addClass('row');
         jq('#insert-selection', document).attr('disabled','disabled');
-        jq('#upload-button', document).removeClass('hide');
+        jq('#upload', document).removeClass('hide');
     } else {
         jq('#browseimage_panel', document).removeClass('row').addClass('hide');
-        jq('#upload-button', document).addClass('hide');
+        jq('#upload', document).addClass('hide');
     }
 
     // handle details/preview panel

@@ -22,6 +22,7 @@ else:
     HAS_DEXTERITY = True
     from plone.dexterity.interfaces import IDexterityContent
     from plone.namedfile.interfaces import INamedImageField
+    from plone.namedfile.interfaces import INamedFileField
     from plone.rfc822.interfaces import IPrimaryFieldInfo
 
 
@@ -62,7 +63,7 @@ class Upload(object):
         return self.jsMessage('uploadOk', path, folder)
 
     def cleanupFilename(self, name):
-        """Generate a unique id which doesn't match	the system generated ids"""
+        """Generate a unique id which doesn't match the system generated ids"""
 
         context = self.context
         id = ''
@@ -132,15 +133,15 @@ class Upload(object):
         request = context.REQUEST
         ctr_tool = getToolByName(context, 'content_type_registry')
 
-        id = request['uploadfile'].filename
+        file_id = request['uploadfile'].filename
         content_type = request['uploadfile'].headers["Content-Type"]
-        typename = ctr_tool.findTypeName(id, content_type, "")
+        typename = ctr_tool.findTypeName(file_id, content_type, "")
 
         # Permission checks based on code by Danny Bloemendaal
 
         # 1) check if the current user has permissions to add stuff
         if not context.portal_membership.checkPermission(
-            'Add portal content', context):
+                'Add portal content', context):
             return self.errorMessage(
                 "You do not have permission to upload files in this folder")
 
@@ -155,17 +156,17 @@ class Upload(object):
         if content_type.split('/')[0] == 'image':
             image_portal_types = self.utility.imageobjects.split('\n')
             uploadable_types += [t for t in image_portal_types
-                                    if t in allowed_types
-                                       and t not in uploadable_types]
+                                 if t in allowed_types
+                                 and t not in uploadable_types]
 
         # Get an unused filename without path
-        id = self.cleanupFilename(id)
+        file_id = self.cleanupFilename(file_id)
 
         for metatype in uploadable_types:
             try:
-                newid = context.invokeFactory(type_name=metatype, id=id)
+                newid = context.invokeFactory(type_name=metatype, id=file_id)
                 if newid is None or newid == '':
-                    newid = id
+                    newid = file_id
                 break
             except ValueError:
                 continue
@@ -207,18 +208,18 @@ class Upload(object):
         folder = obj.aq_parent.absolute_url()
         return self.okMessage(path, folder)
 
-    def setDexterityImage(self, obj):
-        """ Set the image-field of dexterity-based types
+    def setDexterityObject(self, obj, file_id):
+        """ Set the file- or image-field of dexterity-based types
 
-        This works with the "Image"-type of plone.app.contenttypes and has
-        fallbacks for other implementations of image-types with dexterity.
-
+        This works with the types 'Image' and 'File' of plone.app.contenttypes
+        and has fallbacks for other implementations of image- and file-types
+        with dexterity.
         """
         request = self.context.REQUEST
         field_name = ''
         info = ''
         try:
-            # Use the primary field if it's an image-field
+            # Use the primary field
             info = IPrimaryFieldInfo(obj, None)
         except TypeError:
             # ttw-types without a primary field throw a TypeError on
@@ -226,25 +227,30 @@ class Upload(object):
             pass
         if info:
             field = info.field
-            if INamedImageField.providedBy(field):
+            if INamedImageField.providedBy(field) or \
+                    INamedFileField.providedBy(field):
                 field_name = info.fieldname
         if not field_name:
-            # Use the first image-field in the schema
+            # Use the first field in the schema
             obj_schema = queryContentType(obj)
             obj_fields = getFieldsInOrder(obj_schema)
             for field_info in obj_fields:
                 field = field_info[1]
                 field_schema = getattr(field, 'schema', None)
                 if field_schema and field_schema.getName() in [
-                    'INamedBlobImage', 'INamedImage']:
+                    'INamedBlobImage',
+                    'INamedImage',
+                    'INamedBlobFile',
+                    'INamedFile'
+                ]:
                     field_name = field_info[0]
                     break
         if not field_name:
             return False
         else:
-            # Create either a NamedBlobImage or a NamedImage
+            # Create file/image
             setattr(obj, field_name, field._type(request['uploadfile'].read(),
-                                                 filename=unicode(id)))
+                                                 filename=unicode(file_id)))
         return True
 
     def setDescription(self, description):

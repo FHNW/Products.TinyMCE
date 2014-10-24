@@ -40,7 +40,9 @@
                         <input type="text" name="searchtext" id="searchtext" title="Search site" placeholder="Search site" value="" i18n:attributes="placeholder; title" i18n:domain="plone.tinymce"/>
                         <a href="" id="clear-btn" title="Clear" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/cancel.png" /></a>
                         <a href="" id="search-btn" title="Search" i18n:attributes="title" i18n:domain="plone.tinymce"><img src="img/magnifier.png" /></a>
+			            <a id="upload" href=""><img src="img/application_get.png" /> <i18n:translate translate="" domain="plone.tinymce">Upload</i18n:translate></a>
                     </div>
+
                 </div>
 
                 <div style="display: inline" >
