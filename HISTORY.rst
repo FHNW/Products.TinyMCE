@@ -5,12 +5,15 @@ HISTORY
 1.4.1-FHNW1 (unreleased)
 ------------------------
 
-- Nothing changed yet.
-
 
 - Send ObjectInitialized event on image upload
   [tomgross]
 
+- Compatible with universal analytics (plugin).
+
+
+1.4.0-FHNW1 (2014-08-18)
+------------------------
 
 - Fixed inclusion of external CSS resources
   [rristow]
